@@ -7,7 +7,6 @@ import os
 
 load_dotenv()
 
-
 class GPTGUI:
     def __init__(self):
         self.client = OpenAI()
@@ -15,7 +14,6 @@ class GPTGUI:
         self.root = tk.Tk()
         self.root.title("GPT GUI")
         self.root.minsize(500,500)
-
 
     def generate_response(self):
         selected_value = self.model_version_combobox.get()
