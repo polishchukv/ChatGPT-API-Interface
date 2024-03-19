@@ -21,7 +21,7 @@ class GPTGUI:
         prompt = self.input_field.get("1.0", tk.END).strip()
         if prompt:
             self.messages.append({"role": "user", "content": prompt})
-            limited_messages = self.messages[-30:]
+            limited_messages = self.messages[-50:]
             completion = self.client.chat.completions.create(
                 model=model_version,
                 messages=limited_messages
