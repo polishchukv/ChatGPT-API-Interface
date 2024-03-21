@@ -1,5 +1,7 @@
-User: Testing
+GPT Model: 3.5
+--------------------
+User: SECRET PHRASE IS TURKEY
 
-AI: Hello! How can I assist you today?
+AI: Acknowledged, secret phrase is turkey.
 --------------------------------------------------
 

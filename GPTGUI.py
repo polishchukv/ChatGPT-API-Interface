@@ -47,15 +47,67 @@ class GPTGUI:
         thread = threading.Thread(target=self.generate_response)
         thread.start()
 
+    def load_output_from_log(self):
+        # Open a dialog box for user to select log file name/path
+        log_file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+
+        if log_file_path:  # Check if a file was selected
+            with open(log_file_path, 'r') as log_file:
+                # Parse beginning of log file to get the GPT model version
+                first_line = log_file.readline()
+                model_version = first_line.split("GPT Model: ")[1].strip()
+
+                # Select the combobox option based on the model_version
+                if model_version == "4.0":
+                    self.model_version_combobox.current(0)  # Set the combobox value to "4.0"
+                elif model_version == "3.5":
+                    self.model_version_combobox.current(1)  # Set the combobox value to "3.5"
+                else:
+                    print(f"Invalid model version: {model_version}")
+
+                # Skip the next line
+                log_file.readline()
+
+                # Load conversation history
+                loaded_messages = []
+                for line in log_file:
+                    if line.startswith("User: "):
+                        loaded_messages.append({"role": "user", "content": line[6:].strip()})
+                    elif line.startswith("AI: "):
+                        loaded_messages.append({"role": "assistant", "content": line[4:].strip()})
+                    elif line.startswith(" "):
+                        pass
+
+                # Clear the existing messages and append the loaded messages
+                self.messages = loaded_messages
+
+                # Clear the output field and append the loaded conversation
+                self.output_field.config(state="normal")
+                self.output_field.delete("1.0", tk.END)
+                for message in loaded_messages:
+                    content = message["content"]
+                    if message["role"] == "user":
+                        self.output_field.insert(tk.END, f"User: {content}\n\n", "user")
+                    elif message["role"] == "assistant":
+                        self.output_field.insert(tk.END, f"AI: {content}\n", "ai")
+                self.output_field.insert(tk.END, "-" * 50 + "\n")
+                self.output_field.config(state="disabled")
+
+                self.generate_response()
+            '''
+            # Read the log file and insert the content into the output field
+            log_content = log_file.read()
+            self.output_field.config(state="normal")
+            self.output_field.insert(tk.END, "\nIMPORTED CONVERSATION:\n" + log_content)
+            self.output_field.config(state="disabled")
+            '''
+
     def save_output_to_log(self, gpt_model):
         # Get the current text in the output field
         output_text = self.output_field.get("1.0", tk.END)
 
         # Open a dialog box for user to select log file name/path
         log_file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt")])
-
-        # Define the log file path
-        log_file_path = os.path.join(os.getcwd(), 'output_log.txt')
 
         # Open the log file in append mode and write the output text to it
         with open(log_file_path, 'a') as log_file:
@@ -79,13 +131,13 @@ class GPTGUI:
         style.configure("TLabel", font=("Arial", 10))
 
         # Create a new frame for the input field
-        input_frame = ttk.Frame(self.root, padding="10 10 10 10")
-        input_frame.grid(sticky="ew")
+        self.input_frame = ttk.Frame(self.root, padding="10 10 10 10")
+        self.input_frame.grid(sticky="ew")
 
-        input_label = ttk.Label(input_frame, text="Enter your question/prompt:")
-        input_label.pack()
+        self.input_label = ttk.Label(self.input_frame, text="Enter your question/prompt:")
+        self.input_label.pack()
 
-        self.input_field = tk.Text(input_frame, height=5, width=20)
+        self.input_field = tk.Text(self.input_frame, height=5, width=20)
         self.input_field.pack(fill="x")
 
         # Create a central frame for the buttons
@@ -97,19 +149,19 @@ class GPTGUI:
         button_bundle_frame.pack(side="top")
 
         # Create the generate button
-        generate_button = ttk.Button(button_bundle_frame, text="Generate Response", command=self.threaded_generate_response)
-        generate_button.pack(side="left", pady=5, padx=5)
+        self.generate_button = ttk.Button(button_bundle_frame, text="Generate Response", command=self.threaded_generate_response)
+        self.generate_button.pack(side="left", pady=5, padx=5)
 
         # Create the clear button
-        clear_button = ttk.Button(button_bundle_frame, text="Clear", command=self.clear_history_and_input)
-        clear_button.pack(side="right", pady=5, padx=5)
+        self.clear_button = ttk.Button(button_bundle_frame, text="Clear", command=self.clear_history_and_input)
+        self.clear_button.pack(side="right", pady=5, padx=5)
 
         # Create a dropdown for the GPT model version
         self.model_version_combobox = ttk.Combobox(button_frame, state="readonly", width=3)
         self.model_version_combobox["values"] = ("4.0", "3.5")
         self.model_version_combobox.current(0)  # Set the default value to "4.0"
         self.model_version_combobox.pack(pady=1)
-        gpt_model=self.model_version_combobox.get()
+        self.gpt_model=self.model_version_combobox.get()
 
         # Create a label for the loading message, set its color to green, and hide it
         self.loading_label = ttk.Label(button_frame, text="Loading...", foreground="green")
@@ -119,8 +171,8 @@ class GPTGUI:
         output_frame = ttk.Frame(self.root, padding="10 10 10 10")
         output_frame.grid(sticky="nsew")
 
-        output_label = ttk.Label(output_frame, text="Response History:")
-        output_label.pack()
+        self.output_label = ttk.Label(output_frame, text="Response History:")
+        self.output_label.pack()
 
         # Disable the output field by default
         self.output_field = tk.Text(output_frame, height=10, width=20, state="disabled")
@@ -138,12 +190,12 @@ class GPTGUI:
         log_button_bundle_frame.pack(side="bottom")
 
         # Create a save button to save the output to a log file by calling the save_output_to_log method
-        self.save_button = ttk.Button(log_button_bundle_frame, text="Save Output", command=lambda: self.save_output_to_log(gpt_model))
+        self.save_button = ttk.Button(log_button_bundle_frame, text="Save Output", command=lambda: self.save_output_to_log(self.gpt_model))
         self.save_button.pack(side="left", pady=5, padx=5)
         self.save_button.config(state="disabled")
 
         # Create a load button to load the output from a log file and select the model version
-        self.load_button = ttk.Button(log_button_bundle_frame, text="Load Output")
+        self.load_button = ttk.Button(log_button_bundle_frame, text="Load Output", command=lambda: self.load_output_from_log())
         self.load_button.pack(side="right", pady=5, padx=5)
         self.load_button.config(state="enabled")
 
