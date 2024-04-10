@@ -39,6 +39,7 @@ class GPTGUI:
             self.input_field.config(state="normal")
             self.output_field.config(state="disabled")
             self.save_button.config(state="normal")
+            self.input_field.delete("1.0", tk.END)
 
     # Call generate_response w/ threading to prevent GUI from freezing
     def threaded_generate_response(self):
