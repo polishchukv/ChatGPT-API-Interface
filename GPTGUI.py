@@ -3,6 +3,7 @@ from openai import OpenAI
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
+import customtkinter as ctk
 import threading
 import os
 
