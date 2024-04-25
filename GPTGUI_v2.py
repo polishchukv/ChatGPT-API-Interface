@@ -3,14 +3,14 @@ from openai import OpenAI
 import customtkinter as ctk
 import threading
 
-load_dotenv()
+#load_dotenv()
 
 ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 class customGPTGUI:
     def __init__(self):
-        self.client = OpenAI()
+        #self.client = OpenAI()
         self.messages = []
         self.root = ctk.CTk()
         self.root.title("GPT GUI v2")
