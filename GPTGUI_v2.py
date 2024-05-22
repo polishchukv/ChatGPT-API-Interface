@@ -121,7 +121,10 @@ class customGPTGUI:
             self.output_field.configure(state="disabled")
             '''
 
-    def save_log(self, gpt_model):
+    def save_log(self):
+        # Get the selected GPT model version
+        gpt_model = self.version_box.get()
+
         # Get the current text in the output field
         output_text = self.output_field.get("1.0", ctk.END)
 
@@ -173,13 +176,13 @@ class customGPTGUI:
         self.customize_button = ctk.CTkButton(self.options_frame, text="Customize", width=10, font=self.defaultFont, command=self.open_customization_window)
         self.customize_button.pack(side="left", padx=1)
 
-        self.save_button = ctk.CTkButton(self.options_frame, text="Save", width=10, font=self.defaultFont)
+        self.save_button = ctk.CTkButton(self.options_frame, text="Save", width=10, font=self.defaultFont, command=self.save_log)
         self.save_button.pack(side="left", padx=1)
 
         self.load_button = ctk.CTkButton(self.options_frame, text="Load", width=10, font=self.defaultFont, command=self.load_log)
         self.load_button.pack(side="left", padx=1)
 
-        self.clear_button = ctk.CTkButton(self.options_frame, text="Clear", width=10, font=self.defaultFont)
+        self.clear_button = ctk.CTkButton(self.options_frame, text="Clear", width=10, font=self.defaultFont, command=self.clear)
         self.clear_button.pack(side="left", padx=1)
 
         self.version_box = ctk.CTkComboBox(self.options_frame, values=["4o", "4", "3.5"], width=60, state="readonly", font=self.defaultFont)
