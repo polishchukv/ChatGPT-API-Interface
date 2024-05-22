@@ -19,11 +19,16 @@ class GPTGUI:
     # Generate a response using the OpenAI API
     def generate_response(self):
         selected_value = self.model_version_combobox.get()
-        model_version = "gpt-4" if selected_value == "4.0" else "gpt-3.5-turbo"
+        if selected_value == "4o":
+            model_version = "gpt-4o"
+        elif selected_value == "4":
+            model_version = "gpt-4-turbo"
+        elif selected_value == "3.5":
+            model_version = "gpt-3.5-turbo"
         prompt = self.input_field.get("1.0", tk.END).strip()
         if prompt:
             self.messages.append({"role": "user", "content": prompt})
-            limited_messages = self.messages[-50:]
+            limited_messages = self.messages[-100:]
             completion = self.client.chat.completions.create(
                 model=model_version,
                 messages=limited_messages
@@ -59,10 +64,12 @@ class GPTGUI:
                 model_version = first_line.split("GPT Model: ")[1].strip()
 
                 # Select the combobox option based on the model_version
-                if model_version == "4.0":
+                if model_version == "4o":
                     self.model_version_combobox.current(0)  # Set the combobox value to "4.0"
-                elif model_version == "3.5":
+                elif model_version == "4":
                     self.model_version_combobox.current(1)  # Set the combobox value to "3.5"
+                elif model_version == "3.5":
+                    self.model_version_combobox.current(2)  # Set the combobox value to "4o"
                 else:
                     print(f"Invalid model version: {model_version}")
 
@@ -159,7 +166,7 @@ class GPTGUI:
 
         # Create a dropdown for the GPT model version
         self.model_version_combobox = ttk.Combobox(button_frame, state="readonly", width=3)
-        self.model_version_combobox["values"] = ("4.0", "3.5")
+        self.model_version_combobox["values"] = ("4o", "4", "3.5")
         self.model_version_combobox.current(0)  # Set the default value to "4.0"
         self.model_version_combobox.pack(pady=1)
         self.gpt_model=self.model_version_combobox.get()
