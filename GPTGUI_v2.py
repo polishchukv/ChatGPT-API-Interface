@@ -50,7 +50,7 @@ class customGPTGUI:
         self.output_field.configure(state="normal")
         self.messages.append({"role": "assistant", "content": response})
         self.output_field.insert(ctk.END, f"User: {prompt}\n\n", "user")
-        self.output_field.insert(ctk.END, "-" * 100 + "\n)
+        self.output_field.insert(ctk.END, "-" * 100 + "\n")
         self.output_field.insert(ctk.END, f"AI: {response}\n", "ai")
         self.output_field.insert(ctk.END, "-" * 100 + "\n")
         self.input_field.delete("1.0", ctk.END)
