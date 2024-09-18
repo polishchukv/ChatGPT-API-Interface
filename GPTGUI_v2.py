@@ -3,7 +3,7 @@ from openai import OpenAI
 import customtkinter as ctk
 import threading
 
-load_dotenv()
+load_dotenv(override=True)
 
 ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
