@@ -1,6 +1,9 @@
 # Environmental variables
 .env
 
+# Virtual environment for python libraries
+.venv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
