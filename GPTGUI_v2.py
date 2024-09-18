@@ -8,7 +8,7 @@ load_dotenv()
 ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 ctk.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
-class customGPTGUI:
+class CustomGPTGUI:
     def __init__(self):
         self.client = OpenAI()
         self.messages = []
@@ -29,12 +29,10 @@ class customGPTGUI:
     # Generate a response using the OpenAI API
     def generate_response(self):
         selected_value = self.version_box.get()
-        if selected_value == "4o":
-            model_version = "gpt-4o"
-        elif selected_value == "4":
-            model_version = "gpt-4-turbo"
-        elif selected_value == "3.5":
-            model_version = "gpt-3.5-turbo"
+        model_versions = {"4o":"gpt-4o","4":"gpt-4-turbo","3.5":"gpt-3.5-turbo"}
+        model_version = model_versions.get(selected_value)
+        if not model_version:
+            print(f"Invalid model version: {selected_value}.")
         prompt = self.input_field.get("1.0", ctk.END).strip()
         if not prompt:  # Check if prompt is empty
             return  # Do nothing
@@ -51,8 +49,12 @@ class customGPTGUI:
         self.messages.append({"role": "assistant", "content": response})
         self.output_field.insert(ctk.END, f"User: {prompt}\n\n", "user")
         self.output_field.insert(ctk.END, "-" * 100 + "\n")
+        user_prompt_index = self.output_field.index(ctk.END)
         self.output_field.insert(ctk.END, f"AI: {response}\n", "ai")
         self.output_field.insert(ctk.END, "-" * 100 + "\n")
+
+        self.output_field.see(user_prompt_index)
+
         self.input_field.delete("1.0", ctk.END)
         self.loading_label.pack_forget()
         self.input_field.configure(state="normal")
@@ -65,6 +67,7 @@ class customGPTGUI:
         thread = threading.Thread(target=self.generate_response)
         thread.start()
 
+    # Load log file of previous user session *WIP*
     def load_log(self):
         # Open a dialog box for user to select log file name/path
         log_file_path = ctk.filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
@@ -122,6 +125,7 @@ class customGPTGUI:
             self.output_field.configure(state="disabled")
             '''
 
+    # Save log file of previous user session *WIP*
     def save_log(self):
         # Get the selected GPT model version
         gpt_model = self.version_box.get()
@@ -141,14 +145,19 @@ class customGPTGUI:
             # Write the actual output text to the log file
             log_file.write(output_text)
 
+    # Clear the input/output boxes, and start a new session with the API
     def clear(self):
+        # Clear the message history
+        self.messages = []
+        
         # Delete the current text in the output field and the input field
         self.output_field.configure(state="normal")
         self.output_field.delete("1.0", ctk.END)
         self.input_field.delete("1.0", ctk.END)
         self.output_field.configure(state="disabled")
 
-    def setupInput(self):
+    # Setup function for input box
+    def setup_input(self):
         # Create a new frame for the input field
         self.input_frame = ctk.CTkFrame(self.root)
         self.input_frame.pack(fill="x", pady=10, padx=10)  # Add fill and expand options
@@ -158,38 +167,41 @@ class customGPTGUI:
         self.input_field = ctk.CTkTextbox(self.input_frame, font=self.defaultFont)
         self.input_field.pack(fill="x", expand=True, padx=10)
 
-        self.input_button = ctk.CTkButton(self.input_frame, text="Generate Response", font=self.defaultFont, width=20, command=self.threaded_generate_response)
+        self.input_button = ctk.CTkButton(self.input_frame, text="Generate Response", font=self.defaultFont, command=self.threaded_generate_response)
         self.input_button.pack(side="right", pady=10, padx=10)
-        self.input_field.bind("<Shift-Return>", self.shiftEnter)
+        self.input_field.bind("<Shift-Return>", self.shift_enter)
 
         # Create a label for the loading message, set its color to green, and hide it
         self.loading_label = ctk.CTkLabel(self.input_frame, text="Loading...", fg_color="green")
         self.loading_label.pack_forget()
 
-    def shiftEnter(self, event):
+    # Function defining submission action via shift-enter shortcut
+    def shift_enter(self, event):
         self.input_button.invoke()
         return "break"
 
-    def setupOptions(self):
+    # Defines and sets up the configuration option buttons at the top of the GUI
+    def setup_options(self):
         self.options_frame = ctk.CTkFrame(self.root)
         self.options_frame.pack(fill="x", pady=10, padx=10)
 
-        self.customize_button = ctk.CTkButton(self.options_frame, text="Customize", width=10, font=self.defaultFont, command=self.open_customization_window)
+        self.customize_button = ctk.CTkButton(self.options_frame, text="Customize", font=self.defaultFont, command=self.open_customization_window)
         self.customize_button.pack(side="left", padx=1)
 
-        self.save_button = ctk.CTkButton(self.options_frame, text="Save", width=10, font=self.defaultFont, command=self.save_log)
+        self.save_button = ctk.CTkButton(self.options_frame, text="Save", font=self.defaultFont, command=self.save_log)
         self.save_button.pack(side="left", padx=1)
 
-        self.load_button = ctk.CTkButton(self.options_frame, text="Load", width=10, font=self.defaultFont, command=self.load_log)
+        self.load_button = ctk.CTkButton(self.options_frame, text="Load", font=self.defaultFont, command=self.load_log)
         self.load_button.pack(side="left", padx=1)
 
-        self.clear_button = ctk.CTkButton(self.options_frame, text="Clear", width=10, font=self.defaultFont, command=self.clear)
+        self.clear_button = ctk.CTkButton(self.options_frame, text="Clear", font=self.defaultFont, command=self.clear)
         self.clear_button.pack(side="left", padx=1)
 
         self.version_box = ctk.CTkComboBox(self.options_frame, values=["4o", "4", "3.5"], width=60, state="readonly", font=self.defaultFont)
         self.version_box.pack(side="right", padx=1)
         self.version_box.set("4o")
 
+    # Opens customization window when Customize button is pressed
     def open_customization_window(self):
         try: 
             self.customization_window.lift()
@@ -210,7 +222,8 @@ class customGPTGUI:
             # Set the position of the window
             self.customization_window.geometry(f"+{x_coordinate}+{y_coordinate}")
 
-    def setupOutput(self):
+    # Defines and sets up the output text box
+    def setup_output(self):
         # Create a new frame for the output field
         self.output_frame = ctk.CTkFrame(self.root)
         self.output_frame.pack(fill="both", expand=True, pady=10, padx=10)
@@ -219,19 +232,12 @@ class customGPTGUI:
         self.output_field = ctk.CTkTextbox(self.output_frame, state="disabled", font=self.defaultFont)
         self.output_field.pack(padx=10, pady=10, fill="both", expand=True)
 
-    def testCommand(self):
-        #print(self.version_box.get())
-        
-        user_input = self.input_field.get("1.0", "end-1c")
-        self.output_field.configure(state="normal")
-        self.output_field.insert("end", "User: " + "\n" + user_input + "\n\n")
-        self.output_field.configure(state="disabled")
-
+    # Main function that sets up the GUI and runs the main tkinter loop
     def setupGUI(self):
-        self.setupOptions()
-        self.setupInput()
-        self.setupOutput()
+        self.setup_options()
+        self.setup_input()
+        self.setup_output()
         self.root.mainloop()
 
-app = customGPTGUI()
+app = CustomGPTGUI()
 app.setupGUI()
