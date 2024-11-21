@@ -1,0 +1,581 @@
+GPT Model: 4o
+--------------------
+User: Based on this previous exchange, what kind of follow-up email or slack message would I (Vladyslav Polishchuk) write to Ted Mootz?
+
+```
+Vladyslav Polishchuk
+  11:21 AM
+Hi Peter, I'm reaching out regarding two assets that appear to be externally-exposed w/ ports 80, 81, and 443 open.
+The first asset is VLINK-20091601 w/ IP 192.238.76.188 and an existing SNOW ticket that you previous responded to (INC06237537).
+For this first asset, could you please re-confirm whether this is still the same COE-owned Vlink server, and whether those exposed ports are still expected behavior?
+The second asset is VLINK-20042801 w/ IP 192.238.76.138 and no existing SNOW ticket or troubleshooting records on our end.
+For this asset, I was wondering whether you could provide any additional context as to what it is, whether it also belong to COE, and whether the open ports are expected behavior as was seen with the previous asset?
+I've been working on chasing down additional information regarding these two assets for several days now, so thank you in advance for any information you could share!
+CC: 
+@maria useche
+ (VM Manager)
+
+
+
+
+NEW
+
+
+
+Peter Eilenberg
+:rogerroger:  12:10 PM
+Hello Vlad and Maria, the first asset is the COE Vlink server.  The second asset is the CND vlink server. probably no snow tickets because this unit was workshopped with Lazarus and infosec prior to deployment. the 80,81, 443, 444 open is expected behavior.
+:gratitude-thank-you:
+1
+
+
+1 reply
+23 hours agoView thread
+
+
+Peter Eilenberg
+:rogerroger:  12:13 PM
+I believe we were waiting for something on one of the other vlink servers before firewall rules were updated. 80 and 81 are routed to 443 and 444 respectively. there is still a push to close 80, 81 but not 443 ,444.
+12:16
+let me know what other questions or information you are looking for
+
+
+Vladyslav Polishchuk
+  10:37 AM
+Apologies for the late follow-up Peter, but thank you for the detailed breakdown. You mentioned that there's a wait on the other vlink servers before firewall rules get updated - is there by any chance an estimated timeline for this?
+
+
+Peter Eilenberg
+:rogerroger:  10:42 AM
+No idea actually. We were having a weekly cadence with Ted moots but i forget where it was left. We were waiting on sports to update their servers
+:acknowledge:
+1
+:gratitude-thank-you:
+1
+
+
+1 reply
+Today at 10:27 AMView thread
+Saved for later
+
+
+Maria Useche
+:spiral_calendar_pad:  1:51 PM
+replied to a thread:
+Hello Vlad and Maria, the first asset is the COE Vlink server. The second asset is the CND vlink server. probably no snow tickets because this unit was workshopped with Lazarus and infosec prior to deployment. the 80,81, 443, 444 open is expected behavior.
+@peter.eilenberg
+ any chance you are able to confirm who is responsible for patching these 2 servers? VLINK-20091601 w/ IP 192.238.76.188 & VLINK-20042801 w/ IP 192.238.76.138
+would it be under cbs sports or coe?
+no worries if not - we can check with the teams
+
+
+Peter Eilenberg
+:rogerroger:  9:15 AM
+Technically it’s the owners. COE is James Valvo and CND is Phil Selby. Practically speaking the COE server is handled by Karol in the maintenance shop and CND unit usually  falls on me but unofficially
+9:15
+Is there an issue I should be aware of
+
+
+Maria Useche
+:spiral_calendar_pad:  10:17 AM
+Hi 
+@peter.eilenberg
+ not to my knowledge, we just want to make sure we have the appropriate owners for these assets as we had them previously incorrectly tagged to CSE, so now we want to ensure we update our tags to the appropriate group
+
+
+Maria Useche
+:spiral_calendar_pad:  10:27 AM
+replied to a thread:
+No idea actually. We were having a weekly cadence with Ted moots but i forget where it was left. We were waiting on sports to update their servers
+Thanks for the insight! we will follow up with Ted on this as well. Let me know if you’d like for us to include you in the comms or just keep you updated in case of any action items!
+```
+
+----------------------------------------------------------------------------------------------------
+AI: Based on the context provided, here's a follow-up email or Slack message you could write to Ted Mootz:
+
+---
+
+Subject: Follow-Up on Vlink Server Firewall Rule Updates
+
+Hi Ted,
+
+I hope this message finds you well. I wanted to follow up on our ongoing discussions about the Vlink servers. In a recent conversation, Peter mentioned that there was a weekly cadence with you regarding the updates on the firewall rules for these servers. I wanted to check in to see if there's any update on this process or if there's an estimated timeline for when we might proceed with updating these rules.
+
+Additionally, there were some discussions around the ownership and maintenance responsibilities for these servers. We're in the process of ensuring our records accurately reflect the correct tags and ownership. If there are any details you can provide or clarify, it would be greatly appreciated.
+
+Let me know if there's anything specific you need from our side to advance this process. Also, if you'd like us to include anyone specific in these communications or discussions, please feel free to let me know.
+
+Looking forward to your response.
+
+Best regards,
+
+Vladyslav Polishchuk
+
+CC: Maria Useche
+
+--- 
+
+Adjust the message as necessary to fit your communication style and the details of your relationship with Ted Mootz.
+----------------------------------------------------------------------------------------------------
+User: Adjustment: there is no ongoing discussions between us (Vlad and Maria) and Ted regarding the Vlink servers. The discussion was previously held between Peter and Ted, which is what Peters tells us in this communication I provided earlier. Let me know if you understand, and adjust the response accordingly.
+
+----------------------------------------------------------------------------------------------------
+AI: Thank you for the clarification. Given this context, here's an adjusted follow-up message to Ted Mootz:
+
+---
+
+Subject: Inquiry on Vlink Server Firewall Rule Updates
+
+Hi Ted,
+
+I hope you're doing well. I'm reaching out to inquire about the status of the firewall rule updates for the Vlink servers. Peter Eilenberg mentioned that there was a weekly cadence with you regarding these updates, but I understand that it might have been some time since the last discussion.
+
+We're keen on understanding if there's an expected timeline for when these updates might occur, especially since we're coordinating our internal processes around these changes. Additionally, we're updating our records to ensure the correct tags and ownership are reflected for these assets, as there have been previous misalignments.
+
+Your insights would be incredibly helpful. Please let me know if there's any information or assistance you might need from our side. Also, if there are any relevant discussions or meetings we should join moving forward, I'd appreciate the inclusion.
+
+Looking forward to hearing from you.
+
+Best regards,
+
+Vladyslav Polishchuk
+
+CC: Maria Useche
+
+---
+
+Feel free to further adjust the tone or details based on your relationship with Ted and any specific company protocols you might have.
+----------------------------------------------------------------------------------------------------
+User: Adjustment: Ted has no idea what servers I'm talking about based on this message. Fix this, let me know you understand.
+
+----------------------------------------------------------------------------------------------------
+AI: Thank you for the clarification. I understand that Ted may not be familiar with the Vlink servers in question based on the information provided. Here's a revised message that includes more context:
+
+---
+
+Subject: Context Needed on Vlink Server Firewall Rule Updates
+
+Hi Ted,
+
+I hope you're doing well. I'm reaching out regarding the Vlink servers with IP addresses 192.238.76.188 and 192.238.76.138. Peter Eilenberg mentioned that there was previously a regular cadence with you concerning updates to the firewall rules for these servers, specifically addressing ports 80, 81, 443, and 444.
+
+To ensure we're aligned, I'm seeking any insights you might have about the expected timeline for these firewall changes. We've realized there have been previous misalignments in server ownership records, and we're actively working to correct them.
+
+If you have any information on this, or if you're aware of someone else we should contact, I would greatly appreciate it. Please let me know if there's anything further you require from our side to help resolve these queries.
+
+Thank you for your assistance.
+
+Best regards,
+
+Vladyslav Polishchuk
+
+CC: Maria Useche
+
+---
+
+You can make further adjustments if needed based on your preferred communication style or specific organizational guidelines.
+----------------------------------------------------------------------------------------------------
+User: Okay, this is good, but also include the names of the vlink servers. Additionally, revise your tone. Using "I hope you're doing well." is a dead giveaway that this is written by AI. I need you to sound friendly, professional, and most importantly human.
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly! Here's a revised message with a more human touch:
+
+---
+
+Subject: Assistance on Firewall Rule Updates for VLINK-20091601 and VLINK-20042801
+
+Hi Ted,
+
+I wanted to reach out for your expertise regarding firewall rule updates for two Vlink servers: VLINK-20091601 (IP: 192.238.76.188) and VLINK-20042801 (IP: 192.238.76.138). Peter Eilenberg mentioned that there were discussions with you about these servers, specifically regarding ports 80, 81, 443, and 444.
+
+We're trying to align our internal processes and would appreciate any information you might have about the timeline or the status of these updates. We're also in the process of confirming server ownership details, so your insights would be incredibly helpful.
+
+If there's someone else who might have more information, please let me know. I'm keen to ensure we're up-to-date and aligned with any ongoing efforts.
+
+Thank you for your help, Ted. I look forward to your response.
+
+Best regards,
+
+Vladyslav Polishchuk
+
+CC: Maria Useche
+
+---
+
+Feel free to adjust any specifics to better fit your personal style or organizational culture.
+----------------------------------------------------------------------------------------------------
+User: Can you also revise this message for me?
+
+Hi Dominic and Kevin,
+
+We've noticed a laptop that is showing as externally exposed within CrowdStrike (B5B2QL3) due to ports 80, 81, and 443 being open. We're currently working on chasing down the user and appropriate desktop team to determine root cause and get those ports closed, but also wanted to check in with you in case the cyber capabilities team should look into this further for any suspicious activity. In particular, we noticed this asset had over 35k failed login attempts. Please let us know on the above and whether this should be routed over to a more appropriate group.
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly! Here's a revised version of your message:
+
+---
+
+Hi Dominic and Kevin,
+
+I hope this finds you well. We've identified a laptop (B5B2QL3) that appears externally exposed in CrowdStrike due to open ports 80, 81, and 443. We're actively investigating to identify the user and coordinate with the appropriate desktop team to address this, but I wanted to reach out to see if the Cyber Capabilities Team should investigate further for potential suspicious activity. Notably, we've observed over 35,000 failed login attempts on this asset.
+
+Could you let us know if this requires escalation to another team or if there's any additional action you'd recommend?
+
+Thanks for your assistance!
+
+Best regards,  
+[Your Name]
+
+---
+
+Feel free to make adjustments as needed to fit your communication style and organizational culture.
+----------------------------------------------------------------------------------------------------
+User: Sound less robotic please
+
+----------------------------------------------------------------------------------------------------
+AI: Got it, let's make it sound more conversational:
+
+---
+
+Hi Dominic and Kevin,
+
+I wanted to bring something to your attention about a laptop we're seeing as externally exposed in CrowdStrike (B5B2QL3). It's showing open ports 80, 81, and 443, and we're working on figuring out who the user is and looping in the right desktop team to close those ports. With this, we also thought it might be a good idea to see if your team should take a closer look.
+
+What's concerning is that this asset has logged over 35,000 failed login attempts. Let me know if you think this is something the Cyber Capabilities Team should dig into, or if it should be routed to someone else.
+
+Thanks a lot for your help!
+
+Best,  
+[Your Name]
+
+---
+
+Please feel free to tweak it further to fit your style!
+----------------------------------------------------------------------------------------------------
+User: Please be direct
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly! Here's a more direct version:
+
+---
+
+Hi Dominic and Kevin,
+
+We've found a laptop (B5B2QL3) that's externally exposed in CrowdStrike with open ports 80, 81, and 443. We're identifying the user and coordinating with the desktop team to close these ports, but it might need further investigation due to over 35,000 failed login attempts.
+
+Should the Cyber Capabilities Team look into this, or should it be directed to another group?
+
+Thanks,  
+[Your Name]
+
+--- 
+
+Feel free to adjust the names or details if needed!
+----------------------------------------------------------------------------------------------------
+User: How's this:
+
+Hi Dominic and Kevin,
+
+We've found a end user device (B5B2QL3) that's marked as being externally exposed by CrowdStrike due to open ports 80, 81, and 443. We're currently identifying the user and coordinating with the appropriate desktop team to get these ports closed, but wanted to check in with you in case this might warrant further investigation due to there being over 35,000 failed login attempts on the asset. Could you please let us know your thoughts on the above and/or whether this should be routed to another group?
+
+----------------------------------------------------------------------------------------------------
+AI: Your revised message is clear and direct while maintaining a professional tone. It effectively communicates the situation and the need for input from Dominic and Kevin. Here's a slightly polished version with minimal tweaks:
+
+---
+
+Hi Dominic and Kevin,
+
+We've identified an end-user device (B5B2QL3) that's marked as externally exposed by CrowdStrike due to open ports 80, 81, and 443. We're working on identifying the user and coordinating with the appropriate desktop team to close these ports. However, given there are over 35,000 failed login attempts on the asset, we wanted to check in to see if this warrants further investigation.
+
+Could you please share your thoughts on this or advise if it should be routed to another group?
+
+Thanks,  
+[Your Name]
+
+---
+
+This version keeps your direct approach while ensuring clarity and professionalism.
+----------------------------------------------------------------------------------------------------
+User: Can you help me revise this, and reformat it as an email to the SOC team? The folks we reached out to, Dominic and Kevin, suggested that we reach out to the SOC team and bring this to their attention to the high number of failed login attempts. I'd like you to help me formulate an informative email to them.
+
+```
+Hi Dominic and Kevin,
+We've found an end user device (B5B2QL3) that's marked as being externally exposed by CrowdStrike due to open ports 80, 81, and 443. We're currently identifying the user and coordinating with the appropriate desktop team to identify the root cause, but wanted to check in with you in case this might warrant further investigation due to there being over 35,000 failed login attempts on the asset. Could you please share your thoughts on this or advise if it should be routed to another group?
+```
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly! Here's a restructured email directed to the SOC team, incorporating the context you provided:
+
+---
+
+Subject: Investigation Request: High Failed Login Attempts on Device B5B2QL3
+
+Hi SOC Team,
+
+I hope this message finds you well. Following a discussion with Dominic and Kevin, I am reaching out to bring an urgent issue to your attention regarding a potential security concern.
+
+We've identified an end-user device (B5B2QL3) flagged by CrowdStrike as externally exposed due to open ports 80, 81, and 443. While we are currently working with the appropriate desktop team to identify the root cause and close these ports, what stands out is the unusually high number of failed login attempts—over 35,000—recorded on this asset.
+
+Given the volume of failed logins and Dominic and Kevin's recommendation, we believe this situation warrants further investigation by the SOC team to rule out any potential security threats.
+
+Could you please advise on the next steps, or let us know if additional information is needed from our side?
+
+Thank you for your prompt attention to this matter.
+
+Best regards,
+
+[Your Name]  
+[Your Position]  
+[Your Contact Information]  
+
+---
+
+Feel free to adjust any specifics or tone based on your preferences and organizational culture.
+----------------------------------------------------------------------------------------------------
+User: Stop using "I hope this message finds you well."
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly, here's a revised version of the email without that phrase:
+
+---
+
+Subject: Investigation Request: High Failed Login Attempts on Device B5B2QL3
+
+Hi SOC Team,
+
+I'm reaching out to bring a critical issue to your attention, as recommended by Dominic and Kevin. We've identified an end-user device (B5B2QL3) flagged by CrowdStrike as externally exposed with open ports 80, 81, and 443. We're collaborating with the desktop team to pinpoint the root cause and secure these ports.
+
+What concerns us is the over 35,000 failed login attempts on this asset. Given the situation's urgency, we believe it requires further investigation by your team to assess any potential security threats.
+
+Please let us know the next steps or if additional information is needed from our side.
+
+Thank you for addressing this promptly.
+
+Best regards,
+
+[Your Name]  
+[Your Position]  
+[Your Contact Information]  
+
+---
+
+Feel free to adjust further as needed!
+----------------------------------------------------------------------------------------------------
+User: Don't mention that this was recommended by Dominic and Kevin, they don't need to know that. That was just for context, for you. This needs to be an informative email from us to the SOC team, letting them know what we've found and if they could take a closer look due to the high number of failed login attempts.
+
+----------------------------------------------------------------------------------------------------
+AI: Got it, here's a revised version without mentioning Dominic and Kevin:
+
+---
+
+Subject: Investigation Request: High Failed Login Attempts on Device B5B2QL3
+
+Hi SOC Team,
+
+We're writing to inform you of a critical issue regarding an end-user device (B5B2QL3) that has been flagged by CrowdStrike as externally exposed, with open ports 80, 81, and 443. We are actively collaborating with the desktop team to identify the cause and close these ports.
+
+Additionally, this device has registered over 35,000 failed login attempts, which raises concerns about potential security threats. Given these circumstances, we believe it warrants a closer look from your team.
+
+Could you please investigate this issue further and let us know of any necessary actions or if additional information is required from us?
+
+Thank you for your prompt attention to this matter.
+
+Best regards,
+
+[Your Name]  
+[Your Position]  
+[Your Contact Information]
+
+---
+
+Feel free to modify the details as needed for your organizational context.
+----------------------------------------------------------------------------------------------------
+User: Revise:
+
+Hi SOC Team,
+
+While working on vulnerability remediations with the CSE team, we've identified an end-user device (B5B2QL3) flagged by CrowdStrike as externally exposed due to open ports 80, 81, and 443. We're currently collaborating with the end user and appropriate desktop team (Jonny Hjorter, Desktop Stockholm) to determine the root cause and close these ports if possible. 
+
+However, we also noticed that there are over 35,000 failed login attempts on this asset.  Could the team take a closer look at this device to make sure nothing suspicious is going on?
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly! Here's a revised version of your message:
+
+---
+
+Subject: Urgent Review Needed: High Failed Login Attempts on Device B5B2QL3
+
+Hi SOC Team,
+
+During our recent work on vulnerability remediations with the CSE team, we've identified an end-user device (B5B2QL3) flagged by CrowdStrike as externally exposed due to open ports 80, 81, and 443. We're currently working with the end user and Jonny Hjorter from the Desktop Stockholm team to determine the root cause and close these ports if feasible.
+
+Additionally, we've noticed over 35,000 failed login attempts on this device. Could your team please examine this asset to ensure there's no suspicious activity?
+
+Your prompt attention to this matter would be greatly appreciated.
+
+Best regards,
+
+[Your Name]  
+[Your Position]  
+[Your Contact Information]
+
+---
+
+Feel free to adjust any details as needed!
+----------------------------------------------------------------------------------------------------
+User: How else can we say this " Could your team please examine this asset to ensure there's no suspicious activity?"
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly! Here are a few alternative ways to phrase that request:
+
+1. Could your team investigate this asset to rule out any suspicious activity?
+2. We would appreciate it if your team could review this asset for potential security threats.
+3. Could your team look into this to ensure there are no underlying security concerns?
+4. Please have your team assess this asset for any signs of suspicious behavior.
+5. We'd be grateful if your team could check this device for any unusual activity.
+
+Each of these options maintains a professional tone while varying the phrasing.
+----------------------------------------------------------------------------------------------------
+User: Here is my revised message:
+
+During our recent work on vulnerability remediations with the CSE team, we've identified an end-user device (B5B2QL3) flagged by CrowdStrike as externally exposed due to open ports 80, 81, and 443.
+- from initial analysis - there is no business justification for this and crowdstrike's port detections did not appear to be false postives. We checked with Jonny Hjorter (Desktop Stockholm team member) and Sofia.Frode@paramount.com (the end user) on this and confirmed the following 'there should be no new reason the user knows of that the ports are open, she has not installed anything new or done anything else.'.
+- when looking further into this host in crowdstrike, we have noticed over 35,000 failed login attempts.
+- we also reached out to the capabilities team, where they provided the attached that may also be of help to your team
+- can you please take a closer look & advise on next steps? thank you
+
+Can you examine this writing style and mimic it going forward for me? Also give me a summary of your understanding of this writing style, and how I can relay it to you in the future
+
+----------------------------------------------------------------------------------------------------
+AI: Sure, I can definitely assist with that writing style. Here's what I've gleaned from your message style:
+
+### Writing Style Summary:
+
+1. **Conciseness**: The message is direct and keeps information clear and to the point without unnecessary detail.
+
+2. **Bullet Points**: Key information is organized using bullet points, which helps highlight important details in an easy-to-read format.
+
+3. **Clarity**: Each bullet point conveys a specific observation or action taken. This makes the message clear about what has been found, what steps have been taken, and what is being requested.
+
+4. **Evidence-Based**: The message references specific sources (e.g., Jonny Hjorter, Sofia.Frode@paramount.com) and data (e.g., 35,000 failed login attempts) to substantiate the claims and provide context.
+
+5. **Politeness and Professional Tone**: The tone remains professional and polite, using phrases like "thank you" to express appreciation for the recipient's assistance.
+
+### How to Relay This Style Request in the Future:
+
+- **Specify the Use of Bullet Points**: Indicate that information should be summarized in bullet points for clarity.
+
+- **Emphasize Conciseness**: Request that the language be direct and succinct, avoiding overly detailed explanations unless necessary.
+
+- **Highlight Evidence or References**: State when specific evidence, data, or named sources should be clearly mentioned to support the points being made.
+
+- **Maintain Professional Tone**: Ask for a polite and professional tone that includes expressions of thanks or requests for assistance.
+
+- **Use Clear Request and Action Language**: Indicate that the closing should contain a clear request for action or next steps.
+
+Let me know if you have any additional preferences, and I can incorporate them into future messages!
+----------------------------------------------------------------------------------------------------
+User: Go back to our previous conversation regarding the follow-up for Ted. Can you give me the email again?
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly! Here is the revised email for Ted Mootz, incorporating all your requirements discussed earlier:
+
+---
+
+Subject: Inquiry on Vlink Server Firewall Rule Updates for VLINK-20091601 and VLINK-20042801
+
+Hi Ted,
+
+I’m reaching out regarding the Vlink servers, VLINK-20091601 (IP: 192.238.76.188) and VLINK-20042801 (IP: 192.238.76.138), both flagged with open ports 80, 81, 443, and 444. We are aware of the expected behavior for these ports, but I'm seeking clarification or an update on the firewall rule changes, particularly if there's any timeline planned for this.
+
+Additionally, we're ensuring our records accurately reflect the correct tags and ownership for these servers. If there’s any information or insight you can provide, it would be incredibly helpful.
+
+Let me know if there's someone else we should contact or any additional steps we should consider.
+
+Thanks for your assistance.
+
+Best regards,
+
+Vladyslav Polishchuk
+
+CC: Maria Useche
+
+---
+
+Feel free to make adjustments to this draft as needed!
+----------------------------------------------------------------------------------------------------
+User: No, make sure to include all details about our conversation with Peter
+
+----------------------------------------------------------------------------------------------------
+AI: Apologies for that oversight. Let's include the relevant context from your communication with Peter:
+
+---
+
+Subject: Follow-Up on Vlink Server Firewall Rule Updates
+
+Hi Ted,
+
+I hope you're well. I'm reaching out to discuss the firewall rule updates for the Vlink servers, specifically VLINK-20091601 (IP: 192.238.76.188) and VLINK-20042801 (IP: 192.238.76.138).
+
+In a recent conversation with Peter Eilenberg, we confirmed that VLINK-20091601 is the COE Vlink server, while VLINK-20042801 is the CND Vlink server. Both are showing open ports 80, 81, 443, and 444, which are expected, but there is an ongoing push to close ports 80 and 81.
+
+Peter mentioned that there was previously a regular cadence with you regarding these updates, but it seems things have paused while waiting for CBS Sports to update their servers. Given this, we would appreciate any insights you might have on the timeline or the next steps, particularly if there's any action required from our side.
+
+Additionally, our team is updating server ownership records to ensure accuracy. If there's other relevant information or another contact we should be looping in, please let me know.
+
+Thanks for your help and looking forward to your guidance.
+
+Best regards,
+
+Vladyslav Polishchuk
+
+CC: Maria Useche
+
+---
+
+Feel free to tweak the details or tone as needed!
+----------------------------------------------------------------------------------------------------
+User: Okay, give me revision suggestions:
+
+```
+Subject: Inquiry on Vlink Server Firewall Rule Updates for VLINK-20091601 and VLINK-20042801
+
+Hi Ted,
+
+I’m reaching out regarding two vlink servers, VLINK-20091601 (IP: 192.238.76.188) and VLINK-20042801 (IP: 192.238.76.138), both flagged and externally exposed by CrowdStrike with open ports 80, 81, 443, and 444. Maria and I have been trying to track down the owners of these assets, and investigating whether these ports need to remain open. 
+
+In a recent conversation with Peter Eilenberg, we confirmed that VLINK-20091601 is the COE vlink server, while VLINK-20042801 is the CND vlink server. Peter mentioned that there was previously a regular cadence with you regarding these updates, alongside a push to close out ports 80 and 81, but things have paused due to delays in CBS Sports updating some of their servers. 
+
+We wanted to know where this conversation regarding the closing of ports 80 and 81 stands, whether there is a timeline for resuming that conversation, and whether we can do anything to help further than along?
+
+Thank you!
+
+Regards,
+```
+
+----------------------------------------------------------------------------------------------------
+AI: Certainly! Here are some revision suggestions to enhance clarity and readability:
+
+---
+
+Subject: Status Update Request: Vlink Server Firewall Rules for VLINK-20091601 and VLINK-20042801
+
+Hi Ted,
+
+I'm reaching out about two Vlink servers, VLINK-20091601 (IP: 192.238.76.188) and VLINK-20042801 (IP: 192.238.76.138). Both have been flagged by CrowdStrike for external exposure with open ports 80, 81, 443, and 444. Maria and I are working on identifying the asset owners and determining if these ports need to remain open.
+
+In our conversation with Peter Eilenberg, we learned that VLINK-20091601 is the COE Vlink server and VLINK-20042801 is the CND Vlink server. Peter mentioned there was once a regular cadence with you about updating these firewall rules and a push to close ports 80 and 81. However, progress seems stalled due to delays in CBS Sports' server updates.
+
+Could you please provide an update on the status of discussions about closing ports 80 and 81? Is there a timeline for resuming these talks, and is there anything further we can do to facilitate this process?
+
+Thank you!
+
+Best regards,
+
+Vladyslav Polishchuk
+
+---
+
+This version provides a clear articulation of the issue, recent developments, and a specific request for an update, while maintaining a professional tone.
+----------------------------------------------------------------------------------------------------
+
