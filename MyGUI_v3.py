@@ -33,8 +33,8 @@ class CustomGPTGUI:
             "4o": "gpt-4o",
             "4": "gpt-4-turbo",
             "3.5": "gpt-3.5-turbo",
-            "o1": "o1-preview",
-            "o1m": "o1-mini"
+            "o1p": "o1-preview",
+            "o1": "o1"
         }
         model_version = model_versions.get(selected_value)
         if not model_version:
@@ -204,7 +204,7 @@ class CustomGPTGUI:
         self.clear_button.pack(side="left", padx=1)
 
         self.version_box = ctk.CTkComboBox(self.options_frame,
-                                        values=["4o", "4", "3.5", "o1", "o1m"],
+                                        values=["4o", "4", "3.5", "o1p", "o1"],
                                         width=60, state="readonly", font=self.defaultFont)
         self.version_box.pack(side="right", padx=1)
         self.version_box.set("4o")
