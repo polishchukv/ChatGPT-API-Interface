@@ -13,7 +13,7 @@ class CustomGPTGUI:
         self.client = OpenAI()
         self.messages = []
         self.root = ctk.CTk()
-        self.root.title("GPT GUI v3")
+        self.root.title("GPT GUI v4")
         self.root.minsize(500, 500)
 
         screen_width = self.root.winfo_screenwidth()
